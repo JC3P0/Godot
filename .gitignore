@@ -1,0 +1,4 @@
+*.htm
+*.import
+*.tscn
+**/.godot/
