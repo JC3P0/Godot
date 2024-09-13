@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl4pum4a7v8ne"]
-
-[ext_resource type="Script" path="res://Loops.gd" id="1_o8fgr"]
-
-[node name="Main" type="Node2D"]
-script = ExtResource("1_o8fgr")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
