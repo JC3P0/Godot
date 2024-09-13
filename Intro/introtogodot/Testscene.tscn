@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://kah0mm2sbjbh"]
+
+[ext_resource type="PackedScene" uid="uid://m7nntuwr4348" path="res://player.tscn" id="1_adlm2"]
+[ext_resource type="PackedScene" uid="uid://caqxb4wc3ifo6" path="res://coinChallenge.tscn" id="2_vudsx"]
+[ext_resource type="Texture2D" uid="uid://c81c4uqhj7oed" path="res://Sprites/Player.png" id="3_wh2j8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_365f7"]
+size = Vector2(51, 64)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_adlm2")]
+
+[node name="Player2" parent="." instance=ExtResource("1_adlm2")]
+position = Vector2(-200, 73)
+
+[node name="Player3" parent="." instance=ExtResource("1_adlm2")]
+position = Vector2(-216, 243)
+
+[node name="Player4" parent="." instance=ExtResource("1_adlm2")]
+position = Vector2(216, 324)
+
+[node name="coinChallenge" parent="." instance=ExtResource("2_vudsx")]
+position = Vector2(292, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 135)
+texture = ExtResource("3_wh2j8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_365f7")
