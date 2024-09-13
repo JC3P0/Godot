@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://x7uxesmqc6u3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4aabn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qh7xt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3lpb"]
+albedo_color = Color(0.654902, 0.541176, 0.121569, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5307f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug7qg"]
+albedo_color = Color(0.298039, 0.733333, 0.309804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67m13"]
+albedo_color = Color(0.305882, 0.894118, 0.345098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldttm"]
+albedo_color = Color(0.266667, 0.996078, 0.25098, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_om0s7"]
+height = 2.16529
+radius = 0.509515
+
+[node name="Tree" type="StaticBody3D" groups=["Tree"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00570512, 0)
+physics_material_override = SubResource("PhysicsMaterial_4aabn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0589, 0)
+mesh = SubResource("CylinderMesh_qh7xt")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3lpb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.14268, 0, 0, 0, 0.786657, 0, 0, 0, 2.22561, 0, 2.24797, 0)
+mesh = SubResource("SphereMesh_5307f")
+surface_material_override/0 = SubResource("StandardMaterial3D_ug7qg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.77591, 0, 0, 0, 0.755205, 0, 0, 0, 1.74861, 0, 2.6147, 0)
+mesh = SubResource("SphereMesh_5307f")
+surface_material_override/0 = SubResource("StandardMaterial3D_67m13")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.45326, 0, 0, 0, 0.755205, 0, 0, 0, 1.34153, 0, 2.99129, 0)
+mesh = SubResource("SphereMesh_5307f")
+surface_material_override/0 = SubResource("StandardMaterial3D_ldttm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00342864, 1.13567, 0.00551486)
+shape = SubResource("CylinderShape3D_om0s7")
