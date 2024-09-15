@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3rr34gg4lobe"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3ecuvi3x1r07" path="res://Models/blockLarge.obj" id="1_lp20m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kudyk"]
+size = Vector3(2.02051, 1, 2.00476)
+
+[node name="PlatformLarge" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="BlockLarge" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_lp20m")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00537109, 0.502328, 0.000915527)
+shape = SubResource("BoxShape3D_kudyk")
