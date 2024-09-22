@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://kwwsqdoahenm"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_b1w50"]
+[ext_resource type="Texture2D" uid="uid://51qeb83f00ex" path="res://Assests/kenney_pixel-platformer/Tiles/Characters/tile_0002.png" id="2_148dm"]
+[ext_resource type="Texture2D" uid="uid://b2lxxw3q5vxy1" path="res://Assests/kenney_pixel-platformer/Tiles/Characters/tile_0003.png" id="3_bxbfx"]
+[ext_resource type="Script" path="res://Scripts/Player/States/idle_states.gd" id="3_c5g7b"]
+[ext_resource type="Script" path="res://Scripts/Player/States/move_state.gd" id="4_go3im"]
+[ext_resource type="Script" path="res://Scripts/Player/States/jump_state.gd" id="5_8xmnr"]
+[ext_resource type="Script" path="res://Scripts/Player/States/fall_state.gd" id="6_ic30t"]
+[ext_resource type="Script" path="res://Scripts/Player/States/dash_state.gd" id="7_6moiy"]
+[ext_resource type="AudioStream" uid="uid://br15e76pd0lhp" path="res://Assests/audio/jump.ogg" id="9_kxxtb"]
+[ext_resource type="AudioStream" uid="uid://5ajs6cxifh7g" path="res://Assests/audio/audiomass-output.mp3" id="10_lcrk3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_721b7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_148dm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bxbfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_148dm")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_drax0"]
+height = 22.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_b1w50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_721b7")
+animation = &"Move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_drax0")
+
+[node name="States" type="Node" parent="."]
+
+[node name="idle_state" type="Node" parent="States"]
+script = ExtResource("3_c5g7b")
+
+[node name="move_state" type="Node" parent="States"]
+script = ExtResource("4_go3im")
+
+[node name="jump_state" type="Node" parent="States"]
+script = ExtResource("5_8xmnr")
+
+[node name="fall_state" type="Node" parent="States"]
+script = ExtResource("6_ic30t")
+
+[node name="dash_state" type="Node" parent="States"]
+script = ExtResource("7_6moiy")
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kxxtb")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_lcrk3")

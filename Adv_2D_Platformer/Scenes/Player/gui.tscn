@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbcgcda76baiy"]
+
+[ext_resource type="Script" path="res://Scripts/Player/gui.gd" id="1_tqfl1"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_tqfl1")
+
+[node name="heartContainer" type="HBoxContainer" parent="."]
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 62.0
+offset_bottom = 51.0
+
+[node name="Coins" type="Label" parent="."]
+offset_left = 500.0
+offset_top = 17.0
+offset_right = 540.0
+offset_bottom = 40.0
