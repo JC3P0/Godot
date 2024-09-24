@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ep6prukubgux"]
+
+[ext_resource type="Texture2D" uid="uid://4xfhj80u0fyf" path="res://Assets/Bullet.png" id="1_2rs34"]
+[ext_resource type="Script" path="res://Bullet.gd" id="1_rl47y"]
+[ext_resource type="Texture2D" uid="uid://dgddog37ohp7f" path="res://Assets/Circle.png" id="3_yqy31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ootcf"]
+size = Vector2(10, 34)
+
+[sub_resource type="Curve" id="Curve_2aveo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+script = ExtResource("1_rl47y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2rs34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ootcf")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+top_level = true
+position = Vector2(0, -17)
+emitting = false
+amount = 25
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_yqy31")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_2aveo")
+color = Color(0.67451, 0.223529, 0.223529, 1)
+
+[connection signal="finished" from="Particles" to="." method="_on_particles_finished"]

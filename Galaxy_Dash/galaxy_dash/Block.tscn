@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdr1imccicv1w"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_mjfe1"]
+[ext_resource type="FontFile" uid="uid://b5yvqedd272mf" path="res://Assets/FredokaOne-Regular.ttf" id="2_x10ox"]
+[ext_resource type="Texture2D" uid="uid://dgddog37ohp7f" path="res://Assets/Circle.png" id="3_47s1y"]
+
+[sub_resource type="Curve" id="Curve_uyivu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goyol"]
+size = Vector2(108, 108)
+
+[node name="Block" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 108.0
+offset_bottom = 108.0
+script = ExtResource("1_mjfe1")
+colors = Array[Color]([Color(0.00392157, 0.568627, 0.0666667, 1), Color(0.00392157, 0.776471, 0.00392157, 1), Color(0.227451, 0.494118, 0.905882, 1), Color(0.12549, 0.0745098, 0.207843, 1), Color(0.207843, 0.454902, 0.737255, 1), Color(0, 0.780392, 0.666667, 1)])
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.941176, 0.607843, 0.615686, 1)
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("2_x10ox")
+theme_override_font_sizes/font_size = 70
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+top_level = true
+position = Vector2(54, 54)
+emitting = false
+amount = 25
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_47s1y")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_amount_curve = SubResource("Curve_uyivu")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Block"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(54, 54)
+shape = SubResource("RectangleShape2D_goyol")
+
+[connection signal="finished" from="Particles" to="." method="_on_particles_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
